@@ -1,0 +1,23 @@
+---
+# Build a Ubuntu server running Apache
+
+- name: Setup Apache
+  hosts: landing_host
+  # Python is not installed
+  gather_facts: no
+
+  # Install Python on new Ubuntu server
+  pre_tasks:
+  - name: 'install python'
+    raw: 'sudo apt-get -y install python'
+  - name: 'gather facts'
+    setup:
+
+  tasks:
+  - debug:
+      msg: "target host: {{ inventory_hostname }}"
+
+  roles:
+  - role: ansible-role-apache
+    apache_vhosts:
+    - {servername: "gigabytejournal.com", documentroot: "/var/www/vhosts/gigabytejournal_com"}

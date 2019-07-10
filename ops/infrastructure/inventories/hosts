@@ -1,0 +1,11 @@
+[landing_host]
+
+# Do not add any IP address here as it is dynamically managed using terraform-inventory
+
+[landing_host:vars]
+# Avoid SSH key checking so no need to type yes to establish connection
+host_key_checking = False
+ansible_ssh_private_key_file= {{ vault_landing_private_key_file_location }}
+ansible_user="ubuntu"
+ansible_become="true"
+gigabytejournal_environment = landing
