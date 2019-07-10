@@ -44,7 +44,7 @@ resource "aws_instance" "landing_host" {
   ami = "ami-0b97def01ce4527ab"
   instance_type = "t2.micro"
   vpc_security_group_ids = ["${aws_security_group.landing_host.id}"]
-  key_name = "aws-centos7-keys"
+  key_name = "aws-ubuntu18_04-keys"
   tags = {
     Name = "ec2-as1-landing-gigabyte"
   }
